@@ -3,6 +3,7 @@ package pages
 import org.openqa.selenium.{By, WebDriver, WebElement}
 import support.DriverManager
 import utils.ConfigReader
+import utils.ScreenCapture.capture
 
 trait BasePage {
   val driver: WebDriver = DriverManager.driver
@@ -32,5 +33,7 @@ trait BasePage {
 
   def getText(selector: By): String =
     driver.findElement(selector).getText
+
+  def getCapture(): Unit = capture(driver)
 
 }

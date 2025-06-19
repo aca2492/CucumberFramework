@@ -2,7 +2,8 @@ package stepdefs
 
 import io.cucumber.scala.{EN, ScalaDsl}
 import pages.AccountsOverviewPage.verifyHeader
-import pages.LoginPage.{browserLaunch, buttonSubmit, inputPassword, inputUserName}
+import pages.LoginPage.{browserLaunch, buttonSubmit, getCapture, inputPassword, inputUserName}
+import utils.ScreenCapture.capture
 import testdata.Data.{passwordText, userNameText}
 
 
@@ -23,5 +24,6 @@ class LoginSteps extends ScalaDsl with EN  {
 
   Then("""the user should be redirected to the Dashboard""") { () =>
     verifyHeader()
+    getCapture()
   }
 }
