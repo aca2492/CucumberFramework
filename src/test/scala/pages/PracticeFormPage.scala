@@ -57,9 +57,4 @@ object PracticeFormPage extends PracticeFormBasePage{
 
   }
 
-//  def confirmTitle(text: String): Unit = {
-//    headerConfirm(text)
-//  }
-
-
 }
