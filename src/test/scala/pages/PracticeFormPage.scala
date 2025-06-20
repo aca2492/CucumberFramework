@@ -32,10 +32,6 @@ object PracticeFormPage extends PracticeFormBasePage{
     selectDropdown(continent, text)
   }
 
-  def file(): Unit = {
-
-  }
-
   def submitForm(): Unit = {
     clickOn(Submit)
   }
@@ -54,7 +50,6 @@ object PracticeFormPage extends PracticeFormBasePage{
 
   def fileUploadInput(text: String): Unit = {
     inputText(fileUpload, text)
-
   }
 
 }

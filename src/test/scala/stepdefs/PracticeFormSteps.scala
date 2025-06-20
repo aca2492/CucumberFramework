@@ -2,7 +2,7 @@ package stepdefs
 
 import io.cucumber.scala.{EN, ScalaDsl}
 import testdata.PracticeFormData.{continentText, dateText, fileUploadText, firstNameText, lastNameText}
-import pages.PracticeFormPage.{browserpLaunch, continentSelect, dateInput, experienceSelect, file, fileUploadInput, firstNameInput, formSubmitted, genderSelect, lastNameInput, passCookies, professionSelect, scrollGender, submitForm}
+import pages.PracticeFormPage.{browserpLaunch, continentSelect, dateInput, experienceSelect, fileUploadInput, firstNameInput, formSubmitted, genderSelect, lastNameInput, passCookies, professionSelect, scrollGender, submitForm}
 
 class PracticeFormSteps extends ScalaDsl with EN {
 
