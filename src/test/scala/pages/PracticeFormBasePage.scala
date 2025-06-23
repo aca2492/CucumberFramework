@@ -2,20 +2,24 @@ package pages
 
 import locators.PracticeFormTitleLocators.expectedHeader
 import org.openqa.selenium.support.ui.Select
-import org.openqa.selenium.{By, WebDriver, WebElement, JavascriptExecutor}
-import support.DriverManager
-import utils.ConfigReader
-import utils.FormScreenCapture.capture
+import org.openqa.selenium.{By, JavascriptExecutor, WebDriver, WebElement}
+import utils.{ConfigReader, DriverFactory}
+import utils.ScreenshotUtils.screenCapture
 
 trait PracticeFormBasePage {
 
-  val driver: WebDriver = DriverManager.driver
+  val driver: WebDriver = DriverFactory.driver
   val jsExecutor: JavascriptExecutor = driver.asInstanceOf[JavascriptExecutor]
   var formSubmitted: Boolean = true
 
   def browserpLaunch(): Unit = {
     val testUrl = ConfigReader.get("pbase.url")
     driver.get(testUrl)
+  }
+
+  def failureQuit(): Unit = {
+    formCapture()
+    driver.quit()
   }
 
   def findById(id: String): WebElement = driver.findElement(By.id(id))
@@ -42,8 +46,10 @@ trait PracticeFormBasePage {
   def getText(selector: By): String =
     driver.findElement(selector).getText
 
-  def formCapture(): Unit =
-    capture(driver)
+  def formCapture(): Unit = {
+    screenCapture(driver)
+  }
+
 
   def headerConfirm(selector: By, text: String): Unit = {
     if (driver.findElement(selector).getText == expectedHeader) {

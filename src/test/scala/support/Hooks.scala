@@ -2,7 +2,8 @@ package support
 
 import io.cucumber.scala.{EN, ScalaDsl}
 import org.openqa.selenium.chrome.{ChromeDriver, ChromeOptions}
-import pages.PracticeFormPage.{browserpLaunch, formCapture, formSubmitted}
+import pages.PracticeFormPage.{browserpLaunch, failureQuit, formCapture, formSubmitted}
+import utils.DriverFactory
 
 
 class Hooks extends ScalaDsl with EN {
@@ -12,18 +13,17 @@ class Hooks extends ScalaDsl with EN {
 
   Before ("@Form"){
     println("Launching browser before scenario...")
-    DriverManager.driver = new ChromeDriver(options)
-    DriverManager.driver.manage().window().maximize()
+    DriverFactory.driver = new ChromeDriver(options)
+    DriverFactory.driver.manage().window().maximize()
     browserpLaunch()
   }
 
   After {
     println("Closing browser after scenario...")
     if(formSubmitted){
-      DriverManager.driver.quit()
+      DriverFactory.driver.quit()
     }else if(!formSubmitted){
-      formCapture()
-      DriverManager.driver.quit()
+      failureQuit()
     }
 
   }

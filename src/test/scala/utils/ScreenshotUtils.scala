@@ -9,7 +9,7 @@ import java.util.Date
 
 object ScreenshotUtils {
 
-  def capture(driver: WebDriver): Unit = {
+  def screenCapture(driver: WebDriver): Unit = {
 
     val timeStamp = new SimpleDateFormat("yyyyMMdd_HHmmss").format(new Date())
     val srcTimestamp: File = driver.asInstanceOf[TakesScreenshot].getScreenshotAs(OutputType.FILE)
